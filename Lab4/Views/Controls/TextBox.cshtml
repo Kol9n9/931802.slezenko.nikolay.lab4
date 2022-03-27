@@ -1,0 +1,23 @@
+﻿@using Lab4.Models.Controlls
+@model TextBoxModel
+@{
+    ViewBag.Title = "Text Box";
+}
+<h2>Text Box</h2>
+@if (Model == null) {
+    <form asp-controller="Controls" asp-action="TextBox" class="form-group col-md-5 px-0">
+        <div class="form-group">
+            <label asp-for="Text"></label>
+            <input asp-for="Text" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    </form>
+}
+else {
+    <form asp-controller="Controls" asp-action="TextBox" class="form-group">
+        <div class="row">
+            <label asp-for="Text" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input asp-for="Text" class="col form-control-plaintext pl-3 pl-md-0" readonly/>
+        </div>
+    </form>
+}

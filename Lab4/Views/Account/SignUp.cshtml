@@ -1,0 +1,71 @@
+﻿@using Lab4.Models.User.SignUp
+@model Lab4.Models.User.SignUp.SignUpStep1Model
+@{
+    ViewBag.Title = "SignUp";
+}
+<h2>Sign up</h2>
+
+<form asp-controller="Account" asp-action="SignUp" asp-antiforgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+    <!-- Name -->
+    <div class="form-group">
+        <div class="input-group">
+            <input asp-for="FirstName" class="form-control" placeholder="First name" />
+            <input asp-for="LastName" class="form-control" placeholder="Last name" />
+        </div>
+        <span asp-validation-for="FirstName"></span>
+        <span asp-validation-for="LastName"></span>
+    </div>
+
+    <!-- Birth day -->
+    <div class="form-group">
+        <label asp-for="BirthDay" class="font-weight-bold"></label>
+        <input asp-for="BirthDay" />
+        <script src="~/js/bootstrap-birthday.js"></script>
+        <script>
+            $('#@nameof(SignUpStep1Model.BirthDay)').bootstrapBirthday({
+                dateFormat: "littleEndian", placeholder: false,
+                widget: {
+                    wrapper: {
+                        tag: "div",
+                        class: "input-group"
+                    },
+                    wrapperDay: { use: false },
+                    wrapperMonth: { use: false },
+                    wrapperYear: { use: false },
+                    selectYear: {
+                        name: 'birthday[year]',
+                        class: 'form-control'
+                    },
+                    selectMonth: {
+                        name: 'birthday[month]',
+                        class: 'form-control'
+                    },
+                    selectDay: {
+                        name: 'birthday[day]',
+                        class: 'form-control'
+                    }
+                }
+            });
+        </script>
+        <span asp-validation-for="BirthDay"></span>
+    </div>
+    
+    <!-- Gender -->
+    <div class="form-group">
+        <label asp-for="Gender"></label>
+        @foreach (var gender in Enum.GetNames(typeof(Lab4.Models.User.Gender))) {
+            <div class="form-check">
+                <input type="radio" asp-for="Gender" class="form-check-input" value="@gender" required/>
+                <label class="form-check-label">@gender</label>
+            </div>
+        }
+    </div>
+    
+
+    <!-- Submit -->
+    <div class="form-group">
+        <input type="submit" value="SignUp" class="btn btn-primary" />
+    </div>
+</form>

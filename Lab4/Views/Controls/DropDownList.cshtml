@@ -1,0 +1,23 @@
+﻿@using Lab4.Models.Controlls
+@model DropDownListModel
+@{
+    ViewBag.Title = "Drop-down List";
+}
+<h2>Drop-down List</h2>
+@if (Model == null) {
+    <form asp-controller="Controls" asp-action="DropDownList" class="form-group col-md-5">
+        <div class="form-group">
+            <label asp-for="Month"></label>
+            <select asp-for="Month" class="form-control" asp-items="Html.GetEnumSelectList<MonthList>()"></select>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    </form>
+}
+else {
+    <form asp-controller="Controls" asp-action="DropDownList" class="form-group">
+        <div class="row container">
+            <label asp-for="Month" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input type="text" class="col form-control-plaintext pl-3 pl-md-0" value="@Model.Month.ToString()" readonly />
+        </div>
+    </form>
+}

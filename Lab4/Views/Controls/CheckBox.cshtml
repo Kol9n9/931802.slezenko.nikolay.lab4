@@ -1,0 +1,23 @@
+﻿@using Lab4.Models.Controlls
+@model CheckBoxModel
+@{
+    ViewBag.Title = "Check Box";
+}
+<h2>Check Box</h2>
+@if (Model == null) {
+    <form asp-controller="Controls" asp-action="CheckBox" class="form-group col-md-5">
+        <div class="form-check form-group">
+            <input asp-for="IsSelected" class="form-check-input" />
+            <label asp-for="IsSelected" class="form-check-label"></label>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    </form>
+}
+else {
+    <form asp-controller="Controls" asp-action="CheckBox" class="form-group">
+        <div class="row container">
+            <label asp-for="IsSelected" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input type="text" class="col form-control-plaintext pl-3 pl-md-0" value="@Model.IsSelected.ToString()" readonly/>
+        </div>
+    </form>
+}

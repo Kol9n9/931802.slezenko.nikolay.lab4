@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+@model Lab4.Models.User.Profile
+@{
+    ViewBag.Title = "Profile";
+}
+<h2>Profile</h2>
+<form>
+    <!-- Name -->
+    <div class="container form-group">
+        <div class="row">
+            <label asp-for="FirstName" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input asp-for="FirstName" class="col form-control-plaintext pl-3 pl-md-0" readonly />
+        </div>
+        <div class="row">
+            <label asp-for="LastName" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input asp-for="LastName" class="col form-control-plaintext pl-3 pl-md-0" readonly />
+        </div>
+    </div>
+    
+    <!-- Birth day-->
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="BirthDay" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input type="text" value="@Model.BirthDay.ToString("dd MMMM yyyy",CultureInfo.CreateSpecificCulture("en-US"))" class="col form-control-plaintext pl-3 pl-md-0" readonly />
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="Email" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input asp-for="Email" class="col form-control-plaintext pl-3 pl-md-0" readonly />
+        </div>
+    </div>
+    
+    <!-- Gender -->
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="Gender" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input type="text" class="col form-control-plaintext pl-3 pl-md-0" value="@Model.Gender.ToString()" readonly />
+        </div>
+    </div>
+    
+
+    <!-- Password -->
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="Password" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input value="********" class="col form-control-plaintext pl-3 pl-md-0" readonly />
+        </div>
+    </div>
+</form>

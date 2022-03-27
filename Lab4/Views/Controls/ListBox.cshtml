@@ -1,0 +1,23 @@
+﻿@using Lab4.Models.Controlls
+@model ListBoxModel
+@{
+    ViewBag.Title = "List Box";
+}
+<h2>List Box</h2>
+@if (Model == null) {
+    <form asp-controller="Controls" asp-action="ListBox" class="form-group col-md-5">
+        <div class="form-group">
+            <label asp-for="Months"></label>
+            <select multiple asp-for="Months" class="form-control" asp-items="Html.GetEnumSelectList<MonthList>()"></select>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    </form>
+}
+else {
+    <form asp-controller="Controls" asp-action="ListBox" class="form-group">
+        <div class="row container">
+            <label asp-for="Months" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <input type="text" class="col form-control-plaintext pl-3 pl-md-0" value="@String.Join(", ",  Model.Months)" readonly />
+        </div>
+    </form>
+}

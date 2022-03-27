@@ -1,0 +1,23 @@
+﻿@using Lab4.Models.Controlls
+@model TextAreaModel
+@{
+    ViewBag.Title = "Text Area";
+}
+<h2>Text Area</h2>
+@if (Model == null) {
+    <form asp-controller="Controls" asp-action="TextArea" class="form-group col-md-5">
+        <div class="form-group">
+            <label asp-for="Text" class=""></label>
+            <textarea asp-for="Text" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    </form>
+}
+else {
+    <form asp-controller="Controls" asp-action="TextArea" class="form-group">
+        <div class="row container">
+            <label asp-for="Text" class="col-form-label font-weight-bold col-md-3 text-md-right"></label>
+            <textarea asp-for="Text" class="col form-control-plaintext pl-3 pl-md-0" readonly></textarea>
+        </div>
+    </form>
+}
